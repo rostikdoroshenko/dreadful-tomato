@@ -1,0 +1,54 @@
+.card {
+  &-container {
+    position: relative;
+    cursor: pointer;
+    margin: 4px;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    &:hover {
+      .card-container_text_title {
+        bottom: 40px;
+      }
+
+      .card-container_text_description {
+        visibility: visible;
+        opacity: 1;
+        height: 160px;
+      }
+    }
+
+    &_text {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      width: 100%;
+
+      &_title {
+        box-sizing: border-box;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        padding: 12px;
+        font-weight: bold;
+      }
+
+      &_description {
+        visibility: hidden;
+        opacity: 0;
+        transition: height 1s, opacity 1s, visibility 1s linear;
+        display: flex;
+        flex-direction: column;
+        height: 0;
+        padding: 0 8px;
+        background: rgba(0,0,0,0.5);
+        overflow: hidden;
+        box-sizing: border-box;
+
+        span {
+          background: content-box;
+          padding: 2px;
+        }
+      }
+    }
+  }
+}

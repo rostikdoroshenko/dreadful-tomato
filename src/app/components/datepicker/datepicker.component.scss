@@ -1,0 +1,18 @@
+:host {
+  display: contents;
+
+  ::ng-deep {
+    mat-calendar-header {
+      background: #b40b0b;
+    }
+
+    input {
+      width: 50px;
+    }
+
+    .mat-mdc-form-field-infix {
+      width: 60px !important;
+      min-height: 52px !important;
+    }
+  }
+}

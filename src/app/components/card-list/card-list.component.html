@@ -1,0 +1,51 @@
+<div class="list">
+  <mat-progress-bar
+    class="list-progress"
+    *ngIf="isLoading$ | async; else container"
+    mode="indeterminate">
+  </mat-progress-bar>
+
+  <ng-template #container>
+    <div class="list-container">
+      <div class="list-container-form">
+        <form [formGroup]="formGroup">
+          <mat-form-field style="width: 100%">
+            <input matInput type="text" placeholder="search" [formControlName]=INPUT>
+            <mat-icon matPrefix>search</mat-icon>
+          </mat-form-field>
+          <app-datepicker (yearsRangeSelected)="yearsHandler($event)"></app-datepicker>
+        </form>
+      </div>
+
+      <ng-container *ngIf="error$ | async as error">
+        <span class="list-container-error" >Something went wrong...</span>
+        <span class="list-container-error" >{{error.message}}</span>
+      </ng-container>
+
+      <div class="list-container-block" *ngIf="content$ | async as content">
+        <h1 class="list-container-block-title" *ngIf="program$ | async as program">Popular {{program | titlecase}}</h1>
+        <div class="list-container-block-list">
+          <div class="list-container-block-list-item" *ngFor="let item of content">
+            <app-card [card]="item"></app-card>
+          </div>
+        </div>
+        <ng-container *ngIf="!content.length">
+          <span class="empty" >No Content...</span>
+        </ng-container>
+      </div>
+
+      <div class="list-container-pagination" *ngIf="page$ | async as page">
+        <mat-icon *ngIf="page !== 1" (click)="changePage(page - 1)">arrow_back_ios</mat-icon>
+        <span
+          class="list-container-pagination-page"
+          [ngClass]="{selected: pageNumber === page}"
+          *ngFor="let pageNumber of pages$ | async"
+          (click)="changePage(pageNumber)"
+        >
+          {{ pageNumber }}
+        </span>
+        <mat-icon *ngIf="page !== (pages$ | async)?.length" (click)="changePage(page + 1)">arrow_forward_ios</mat-icon>
+      </div>
+    </div>
+  </ng-template>
+</div>

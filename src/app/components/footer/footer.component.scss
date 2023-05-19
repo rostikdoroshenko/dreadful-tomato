@@ -1,0 +1,22 @@
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #363535;
+
+  &-links {
+    span {
+      margin: 0 10px;
+      font-size: 18px;
+    }
+  }
+
+  &-copy {
+    font-size: 12px;
+  }
+}
+
+.mb {
+  margin-bottom: 10px;
+}

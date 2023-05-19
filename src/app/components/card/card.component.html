@@ -1,0 +1,10 @@
+<div class="card-container">
+  <img [ngSrc]="card.images.posterArt.url" height="300" width="200" alt="card" priority>
+  <div class="card-container_text">
+    <span class="card-container_text_title">{{card.title}}</span>
+    <span class="card-container_text_description">
+      <span>{{card.releaseYear}}</span>
+      <span>{{card.description}}</span>
+    </span>
+  </div>
+</div>

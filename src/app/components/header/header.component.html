@@ -1,0 +1,40 @@
+<div class="header-container">
+  <div class="header-container-block">
+    <div class="header-container-block-logo" routerLink="/">
+      <img ngSrc="../../../assets/logo.png" height="54" width="274" alt="logo" priority routerLink="/">
+    </div>
+    <div
+      class="header-container-block-button"
+      [ngClass]="{selected: (program$ | async) === ProgramType.MOVIES}"
+      *ngIf="isContentPage"
+      (click)="clickHandler(ProgramType.MOVIES)">
+      <img ngSrc="../../../assets/icon-movies.png" height="31" width="31" alt="movies">
+      <span class="header-container-block-button-text">Movies</span>
+    </div>
+    <div
+      class="header-container-block-button"
+      [ngClass]="{selected: (program$ | async) === ProgramType.SERIES}"
+      *ngIf="isContentPage"
+      (click)="clickHandler(ProgramType.SERIES)">
+      <img ngSrc="../../../assets/icon-series.png" height="31" width="31" alt="series">
+      <span class="header-container-block-button-text">Series</span>
+    </div>
+  </div>
+
+  <div class="header-container-block">
+    <div
+      *ngIf="isAppliedFilters$ | async"
+      (click)="clearFilters()"
+      class="header-container-block-button">
+      <img ngSrc="../../../assets/icon-filter.png" height="26" width="26" alt="filter">
+      <span class="header-container-block-button-text">Clear Filters</span>
+    </div>
+    <div class="header-container-block-button">
+      <img ngSrc="../../../assets/icon-login.png" height="20" width="20" alt="login">
+      <span class="header-container-block-button-text">Login</span>
+    </div>
+    <div class="header-container-block-button">
+      <button class="header-container-block-button-trial">Start your free trial</button>
+    </div>
+  </div>
+</div>
